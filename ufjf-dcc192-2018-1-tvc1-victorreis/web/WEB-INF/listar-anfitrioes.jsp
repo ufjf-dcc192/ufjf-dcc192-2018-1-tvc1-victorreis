@@ -25,7 +25,6 @@
             <th>Nome</th>
             <th>Descricao</th>
             <th>Localizacao</th>
-            <th>Está disponível?</th>
             <th>Períodos OCUPADOS</th>
             <th>Cadastrar período</th>
         </tr>
@@ -44,7 +43,7 @@
                     </c:forEach>
                 </ul>
             </td>
-            <td><a href="cadastrar-periodo.html?id=${anfitriao.getId()}">Cadastrar Período</a></td>
+            <td><a href="criar-periodo-ocupado.html?id=${anfitriao.getId()}">Cadastrar Período</a></td>
         </tr>
     </c:forEach>
     </tbody>

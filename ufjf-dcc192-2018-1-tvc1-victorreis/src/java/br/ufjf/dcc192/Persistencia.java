@@ -1,9 +1,16 @@
 package br.ufjf.dcc192;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Persistencia {
 
@@ -103,6 +110,42 @@ public class Persistencia {
 
         anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, nome, descricao, localizacao));
         autoIncrementoAnfitriao++;
+        return true;
+    }
+    
+    public static boolean criarPeriodoOcupado(String idAnfitriao, String periodoInicio, String periodoFinal) {
+        getInstanceAnfitrioes();
+        getInstanceIntercambistas();
+        
+        Anfitriao anfitriao = getAnfitriaoById(idAnfitriao);
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            anfitriao.getPeriodosOcupados().add(new Periodo(simpleDateFormat.parse(periodoInicio), simpleDateFormat.parse(periodoFinal)));
+        } catch (ParseException | NumberFormatException ex) {
+            Logger.getLogger(Persistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, nome, descricao, localizacao));
+//        autoIncrementoAnfitriao++;
+        return true;
+    }
+    
+    public static boolean criarPeriodoInteresse(String idIntercambista, String periodoInicio, String periodoFinal)  {
+        getInstanceAnfitrioes();
+        getInstanceIntercambistas();
+        
+        Intercambista intercambista = getIntercambistaById(idIntercambista);
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        try {
+            intercambista.getPeriodosDeInteresse().add(new Periodo(simpleDateFormat.parse(periodoInicio), simpleDateFormat.parse(periodoFinal)));
+        } catch (ParseException | NumberFormatException ex) {
+            Logger.getLogger(Persistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, nome, descricao, localizacao));
+//        autoIncrementoAnfitriao++;
         return true;
     }
     

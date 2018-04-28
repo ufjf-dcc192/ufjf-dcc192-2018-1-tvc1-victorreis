@@ -33,12 +33,12 @@
             <td>${intercambista.getIdioma()}</td>
             <td>
                 <ul>
-                    <c:forEach items="${intercambista.getPeriodosOcupados()}" var="periodo">
+                    <c:forEach items="${intercambista.getPeriodosDeInteresse()}" var="periodo">
                         <li>De ${periodo.getInicioPeriodo()} até ${periodo.getFinalPeriodo()}</li>
                     </c:forEach>
                 </ul>
             </td>
-            <td><a href="cadastrar-periodo.html?id=${intercambista.getId()}">Cadastrar Período</a></td>
+            <td><a href="criar-periodo-interesse.html?id=${intercambista.getId()}">Cadastrar Período</a></td>
         </tr>
     </c:forEach>
     </tbody>
