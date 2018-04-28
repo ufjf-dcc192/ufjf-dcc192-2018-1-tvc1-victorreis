@@ -14,18 +14,16 @@
 <%@include file="jspf/cabecalho.jspf" %>
 
 <form method="POST">
-    <label for="nome-anfitriao">Anfitriao</label><br>
-    <input type="text" name="nome-anfitriao" /><br>
+    <label for="data-inicio">Data Início do Período</label><br>
+    <input type="date" name="data-inicio" /><br>
     
-    <label for="descricao">Descricao</label><br>
-    <input type="text" name="descricao" /><br>
-    
-    <label for="localizacao">Localizacao</label><br>
-    <input type="text" name="localizacao" /><br>
+    <label for="data-final">Data Final do Período</label><br>
+    <input type="date" name="data-final" /><br>
     
     <br><br>
     
-    <input type="submit" value="Cadastrar">
+    <input type="hidden" name="id-intercambista" value="${intercambista.getId()}">
+    <input type="submit" value="Cadastrar Período">
 </form>
 
 <%@include file="jspf/rodape.jspf" %>

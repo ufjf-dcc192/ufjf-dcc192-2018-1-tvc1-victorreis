@@ -15,10 +15,13 @@
         <aside>
             <menu>
                 <li><a href="index.html">Home</a></li>
+                <br>
                 <li><a href="criar-anfitriao.html">Criar Anfitriao</a></li>
-                <li><a href="criar-intercambista.html">Criar Intercambista</a></li>
                 <li><a href="listar-anfitrioes.html">Listar Anfitrioes</a></li>
+                <br>
+                <li><a href="criar-intercambista.html">Criar Intercambista</a></li>
                 <li><a href="listar-intercambistas.html">Listar Intercambistas</a></li>
+                <br>
                 <!--<li><a href="listar-itens-cadastrados.html">Listar itens Cadastrados no sistema</a></li>-->
             </menu>
         </aside>

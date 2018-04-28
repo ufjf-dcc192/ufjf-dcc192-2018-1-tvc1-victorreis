@@ -12,5 +12,20 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@include file="jspf/cabecalho.jspf" %>
-Bem vindo!
+
+<form method="POST">
+    <label for="nome-intercambista">Nome Intercambista</label><br>
+    <input type="text" name="nome-intercambista" /><br>
+    
+    <label for="descricao">Descricao</label><br>
+    <input type="text" name="descricao" /><br>
+    
+    <label for="idiomas">Idioma</label><br>
+    <input type="text" name="idiomas" /><br>
+    
+    <br><br>
+    
+    <input type="submit" value="Cadastrar">
+</form>
+
 <%@include file="jspf/rodape.jspf" %>

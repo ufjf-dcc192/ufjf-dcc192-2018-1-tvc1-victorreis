@@ -45,6 +45,12 @@ public class BuddyServlet extends HttpServlet {
         } else if ("/listar-intercambistas.html".equals(request.getServletPath())) {
             listarIntercambistas(request, response);
             return;
+        } else if ("/criar-periodo-ocupado.html".equals(request.getServletPath())) {
+            criarPeriodoOcupado(request, response);
+            return;
+        } else if ("/criar-periodo-interesse.html".equals(request.getServletPath())) {
+            criarPeriodoInteresse(request, response);
+            return;
         }
         response.sendError(404);
     }
@@ -56,7 +62,7 @@ public class BuddyServlet extends HttpServlet {
     }
     
     private void criarAnfitriao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome-anfitriao");
         String descricao = request.getParameter("descricao");
         String localizacao = request.getParameter("localizacao");
         
@@ -76,13 +82,13 @@ public class BuddyServlet extends HttpServlet {
     }
     
     private void criarIntercambista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome-intercambista");
         String descricao = request.getParameter("descricao");
-        String idioma = request.getParameter("idioma");
+        String idiomas = request.getParameter("idiomas");
         
         // Recebendo a requisição POST, ou seja, o formulário de CADASTRO foi enviado
-        if (nome != null && descricao != null && idioma != null) {
-            Persistencia.criarNovoIntercambista(nome, "".equals(descricao) ? "-" : descricao, "".equals(idioma) ? "-" : idioma);
+        if (nome != null && descricao != null && idiomas != null) {
+            Persistencia.criarNovoIntercambista(nome, "".equals(descricao) ? "-" : descricao, "".equals(idiomas) ? "-" : idiomas);
             
             // Garante que o código fora do IF não será executado
             response.sendRedirect("listar-intercambistas.html");
@@ -107,6 +113,46 @@ public class BuddyServlet extends HttpServlet {
         request.setAttribute("titulo", "Listar Intercambistas");
         request.setAttribute("intercambistas", Persistencia.getInstanceIntercambistas());
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/listar-intercambistas.jsp");
+        despachante.forward(request, response);
+    }
+    
+    private void criarPeriodoOcupado(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String periodoInicio = request.getParameter("periodo-inicio");
+        String periodoFinal = request.getParameter("periodo-final");
+        String idAnfitriao = request.getParameter("id-anfitriao");
+        
+        // Recebendo a requisição POST, ou seja, o formulário de CADASTRO foi enviado
+        if (periodoInicio != null && periodoFinal != null && idAnfitriao != null) {
+            
+//            Persistencia.criarNovoIntercambista(nome, "".equals(descricao) ? "-" : descricao, "".equals(idiomas) ? "-" : idiomas);
+            
+            // Garante que o código fora do IF não será executado
+            response.sendRedirect("listar-intercambistas.html");
+            return;
+        }
+        
+        request.setAttribute("titulo", "Criar Periodo Ocupado");
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/criar-periodo-ocupado.jsp");
+        despachante.forward(request, response);
+    }
+    
+    private void criarPeriodoInteresse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String periodoInicio = request.getParameter("periodo-inicio");
+        String periodoFinal = request.getParameter("periodo-final");
+        String idIntercambista = request.getParameter("id-intercambista");
+        
+        // Recebendo a requisição POST, ou seja, o formulário de CADASTRO foi enviado
+        if (periodoInicio != null && periodoFinal != null && idIntercambista != null) {
+            
+//            Persistencia.criarNovoIntercambista(nome, "".equals(descricao) ? "-" : descricao, "".equals(idiomas) ? "-" : idiomas);
+            
+            // Garante que o código fora do IF não será executado
+            response.sendRedirect("listar-intercambistas.html");
+            return;
+        }
+        
+        request.setAttribute("titulo", "Criar Periodo Interesse");
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/criar-periodo-interesse.jsp");
         despachante.forward(request, response);
     }
 //    

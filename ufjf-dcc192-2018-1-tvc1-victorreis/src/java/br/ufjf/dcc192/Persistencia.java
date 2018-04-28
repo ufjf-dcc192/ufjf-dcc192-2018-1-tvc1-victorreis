@@ -1,7 +1,9 @@
 package br.ufjf.dcc192;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Persistencia {
 
@@ -19,6 +21,12 @@ public class Persistencia {
             anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, "anf3", "descricaooo33", "rua ..."));
             anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, "anf44", "descricaooo4", "rua ..."));
             anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, "anf555", "descricaooo55", "rua ..."));
+            
+            anfitrioes.get(0).getPeriodosOcupados().add(new Periodo(new Date(), new Date()));
+            anfitrioes.get(2).getPeriodosOcupados().add(new Periodo(new Date(), new Date()));
+            anfitrioes.get(2).getPeriodosOcupados().add(new Periodo(new Date(), new Date()));
+            anfitrioes.get(3).getPeriodosOcupados().add(new Periodo(new Date(), new Date()));
+            anfitrioes.get(4).getPeriodosOcupados().add(new Periodo(new Date(), new Date()));
         }
         return anfitrioes;
     }
@@ -32,6 +40,10 @@ public class Persistencia {
             intercambistas.add(new Intercambista(autoIncrementoIntercambista++, "inter3", "descricaooo33", "inglês"));
             intercambistas.add(new Intercambista(autoIncrementoIntercambista++, "inter44", "descricaooo4", "espanhol"));
             intercambistas.add(new Intercambista(autoIncrementoIntercambista++, "inter555", "descricaooo55", "inglês"));
+            
+            intercambistas.get(1).getPeriodosDeInteresse().add(new Periodo(new Date(), new Date()));
+            intercambistas.get(1).getPeriodosDeInteresse().add(new Periodo(new Date(), new Date()));
+            intercambistas.get(2).getPeriodosDeInteresse().add(new Periodo(new Date(), new Date()));
         }
         return intercambistas;
     }
@@ -89,7 +101,7 @@ public class Persistencia {
         getInstanceAnfitrioes();
         getInstanceIntercambistas();
 
-        anfitrioes.add(new Anfitriao(autoIncrementoIntercambista++, nome, descricao, localizacao));
+        anfitrioes.add(new Anfitriao(autoIncrementoAnfitriao++, nome, descricao, localizacao));
         autoIncrementoAnfitriao++;
         return true;
     }
